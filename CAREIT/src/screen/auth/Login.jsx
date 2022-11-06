@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import imagesPath from '../../assets/constants/imagePath';
 
 const Login = () => {
 
@@ -9,21 +10,24 @@ const Login = () => {
     return (
         <SafeAreaView>
             <ScrollView>
-                <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/images/auth_bg.png')}
-                        resizeMode={'cover'}
-                        style={styles.defaultBg} 
-                    />
-                </View>
                 <View style={{padding:10,backgroundColor:'#fff'}}>
                     <View style={styles.formInput}>
                         <View style={{justifyContent:'center', alignItems:'center'}}>
                             <Image source={require('../../assets/images/logo.png')}
                                 resizeMode={'contain'}
-                                style={{width:150,height:150,borderRadius:100}}
+                                style={{width:'100%',height:150,borderRadius:100}}
                             />
                         </View>
                     </View>
+                    <View style={styles.container}>
+                        <Text style={styles.myTitle}>Login As</Text>
+                    </View>
+
+                    <Text style={styles.input}>Donor, NGO, JobSeeker, JobPoster</Text>
+                    <View style={styles.formInput}>
+                        <TextInput style={styles.textInput} placeholder="Type your option" />
+                    </View>
+
                     <View style={styles.formInput}>
                         <TextInput style={styles.textInput} placeholder="Username" />
                     </View>
@@ -32,7 +36,7 @@ const Login = () => {
                     </View>
                     <View style={styles.formInput}>
                         <TouchableOpacity onPress={()=>{navigation.navigate("Forget")}}>
-                            <Text style={{color:'#2bff00', textAlign:'right', fontSize:16, fontWeight:'bold'}} >Forget Password?</Text>
+                            <Text style={{color:'black', textAlign:'right', fontSize:16, fontWeight:'bold'}} >Forget Password?</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.formInput}>
@@ -40,13 +44,14 @@ const Login = () => {
                             <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Login</Text>
                         </TouchableOpacity>
                     </View>
+
                     <View style={styles.formInput}>
-                        <View style={{height:1,backgroundColor:'#ddd',width:'100%'}}></View>
-                    </View>
-                    <View style={styles.formInput}>
-                        <TouchableOpacity onPress={()=>{navigation.navigate("Register")}}>
-                            <Text style={{color:'#2bff00', textAlign:'center', fontSize:16, fontWeight:'bold'}} >Need Account? Register Now</Text>
-                        </TouchableOpacity>
+                        <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{color:'black', textAlign:'center', fontSize:16, fontWeight:'bold'}} >Don't have Account? </Text>
+                            <TouchableOpacity onPress={()=>{navigation.navigate("Register")}}>
+                                <Text style={{color:'#f79616', textAlign:'center', fontSize:16, fontWeight:'bold'}} >Sign Up</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </ScrollView>
@@ -55,6 +60,21 @@ const Login = () => {
 }
 
 const styles = StyleSheet.create({
+    myTitle: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color:'black',
+        marginLeft:10
+    },
+    input: {
+        marginTop: 40,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color:'black',
+        marginLeft:10
+    },
     container: {
         flex: 1
     },
@@ -75,8 +95,21 @@ const styles = StyleSheet.create({
     },
     defaultButton: {
         padding: 15,
-        backgroundColor: '#4287f5',
-        borderRadius: 10
+        backgroundColor: '#f79616',
+        borderRadius: 10,
+        width:200,
+        marginLeft:75
+    },
+    dropDownStyle: {
+        padding: 8,
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#a7a7a7',
+        borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        maxHeight:50
     }
  });
 
