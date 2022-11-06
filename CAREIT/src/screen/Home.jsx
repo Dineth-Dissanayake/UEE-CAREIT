@@ -9,16 +9,9 @@ import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, Tou
     return (
         <SafeAreaView style={{flex:1}}>
             <ScrollView>
-                <View style={styles.container}>
-                    <ImageBackground source={require('../assets/images/auth_bg.png')}
-                        resizeMode={'cover'}
-                        style={styles.defaultBg} 
-                    />
-                </View>
 
                 <View style={styles.container}>
-                    <Text style={styles.myTitle}>Welcome,</Text>
-                    <Text style={styles.myTitle}>Sampath Perera</Text>
+                    <Text style={styles.myTitle}>Welcome To</Text>
                 </View>
                 <View style={{flexDirection:'row',marginTop:100}}>
                     <TouchableOpacity style={styles.defaultButton1} onPress={()=>{navigation.navigate("PlaceOrder")}}>

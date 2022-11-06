@@ -9,20 +9,24 @@ const Register = () => {
     return (
         <SafeAreaView>
             <ScrollView>
-                <View style={styles.container}>
+                {/* <View style={styles.container}>
                     <ImageBackground source={require('../../assets/images/auth_bg.png')}
                         resizeMode={'cover'}
                         style={styles.defaultBg} 
                     />
-                </View>
+                </View> */}
                 <View style={{padding:10,backgroundColor:'#fff'}}>
                     <View style={styles.formInput}>
                         <View style={{justifyContent:'center', alignItems:'center'}}>
                             <Image source={require('../../assets/images/logo.png')}
                                 resizeMode={'contain'}
-                                style={{width:150,height:150,borderRadius:100}}
+                                style={{width:'100%',height:150,borderRadius:100,marginTop:-20}}
                             />
                         </View>
+                    </View>
+                    <Text style={styles.input}>Donor, NGO, JobSeeker, JobPoster</Text>
+                    <View style={styles.formInput}>
+                        <TextInput style={styles.textInput} placeholder="Type your option" />
                     </View>
                     <View style={styles.formInput}>
                         <TextInput style={styles.textInput} placeholder="Username" />
@@ -41,12 +45,10 @@ const Register = () => {
                             <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Register</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.formInput}>
-                        <View style={{height:1,backgroundColor:'#ddd',width:'100%'}}></View>
-                    </View>
+                
                     <View style={styles.formInput}>
                         <TouchableOpacity onPress={()=>{navigation.navigate("Login")}}>
-                            <Text style={{color:'#2bff00', textAlign:'center', fontSize:16, fontWeight:'bold'}} >Already have an Account? Login</Text>
+                            <Text style={{color:'black', textAlign:'center', fontSize:16, fontWeight:'bold'}} >Already have an Account? Login</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -58,6 +60,14 @@ const Register = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1
+    },
+    input: {
+        marginTop: 5,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color:'black',
+        marginLeft:10
     },
     defaultBg: {
         width: '100%',
@@ -76,7 +86,7 @@ const styles = StyleSheet.create({
     },
     defaultButton: {
         padding: 15,
-        backgroundColor: '#4287f5',
+        backgroundColor: '#f79616',
         borderRadius: 10
     }
  });
