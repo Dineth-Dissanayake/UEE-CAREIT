@@ -1,7 +1,7 @@
 {
-  "name": "Procurement_For_Construction_Industry",
+  "name": "CAREIT-BACKEND",
   "version": "1.0.0",
-  "description": "This Web App supports Procurement for Construction Industry",
+  "description": "This's a BACKEND for CAREIT app",
   "main": "app.js",
   "author": "Quad_Squad",
   "license": "MIT",
