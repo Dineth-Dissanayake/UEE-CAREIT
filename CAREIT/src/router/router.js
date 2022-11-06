@@ -14,7 +14,9 @@ const AppRouter = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Splash">
-                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen options={{title:'',headerBackVisible:false,headerStyle:{backgroundColor:'#f79616'}}} 
+                    name="Home" component={Home} 
+                />
                 <Stack.Screen options={{headerShown:false}} name="Login" component={Login} />
                 <Stack.Screen options={{headerShown:false}} name="Register" component={Register} />
                 <Stack.Screen options={{headerShown:false}} name="Splash" component={Splash} />
