@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import imagesPath from '../../assets/constants/imagePath';
 
 const Login = () => {
 
@@ -64,8 +63,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
-        color:'black',
-        marginLeft:10
+        color:'black'
     },
     input: {
         marginTop: 40,
@@ -99,17 +97,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width:200,
         marginLeft:75
-    },
-    dropDownStyle: {
-        padding: 8,
-        backgroundColor: '#fff',
-        borderWidth: 1,
-        borderColor: '#a7a7a7',
-        borderRadius: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        maxHeight:50
     }
  });
 

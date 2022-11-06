@@ -1,8 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
- const Home = () => {
+import imagesPath from '../assets/constants/imagePath';
+
+const Home = () => {
 
     const navigation = useNavigation();
 
@@ -11,23 +13,28 @@ import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, Tou
             <ScrollView>
 
                 <View style={styles.container}>
-                    <Text style={styles.myTitle}>Welcome To</Text>
+                    <Text style={styles.myTitle}>Welcome To CAREIT</Text>
                 </View>
-                <View style={{flexDirection:'row',marginTop:100}}>
-                    <TouchableOpacity style={styles.defaultButton1} onPress={()=>{navigation.navigate("PlaceOrder")}}>
-                            <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >New Order</Text>
+                <View style={{flexDirection:'row',marginTop:50}}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("")}}>
+                        <Image source={imagesPath.FoodIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
+                        <Text style={styles.input}>Food Donation</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.defaultButton1} onPress={()=>{navigation.navigate("")}}>
-                            <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Order History</Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("")}}>
+                        <Image source={imagesPath.BookIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
+                        <Text style={styles.input}>Book Donation</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={{flexDirection:'row',marginTop:50}}>
-                    <TouchableOpacity style={styles.defaultButton1} onPress={()=>{navigation.navigate("")}}>
-                            <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Items</Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("")}}>
+                        <Image source={imagesPath.ClothIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
+                        <Text style={styles.input1}>Cloths & Samitary</Text>
+                        <Text style={styles.input1}>Items Donation</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.defaultButton1} onPress={()=>{navigation.navigate("")}}>
-                            <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Suppliers</Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("")}}>
+                        <Image source={imagesPath.NGOIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
+                        <Text style={styles.input}>NGO'S Details</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -43,37 +50,37 @@ import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, Tou
 
 
  const styles = StyleSheet.create({
+    input: {
+        marginTop: 2,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color:'black',
+        marginLeft:50
+    },
+    input1: {
+        marginTop: 2,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color:'black',
+        marginLeft:30
+    },
     myTitle: {
         fontSize: 30,
         fontWeight: 'bold',
-        textAlign: 'left',
-        color:'#757575',
-        marginLeft:10
-    },
-    formInput: {
-        marginTop: 10,
-        padding: 10
-    },
-    defaultButton1: {
-        padding: 15,
-        height:100,
-        width:125,
-        backgroundColor: '#4287f5',
-        borderRadius: 10,
-        marginLeft:50
+        textAlign: 'center',
+        color:'black',
+        marginTop:20
     },
     defaultButton: {
         padding: 15,
-        backgroundColor: '#f03a2e',
+        backgroundColor: '#f79616',
         borderRadius: 10,
         width:150,
         marginLeft:115,
         marginTop:120,
-    },
-    defaultBg: {
-        width: '100%',
-        height:80
-    },
+    }
  });
 
  export default Home;
