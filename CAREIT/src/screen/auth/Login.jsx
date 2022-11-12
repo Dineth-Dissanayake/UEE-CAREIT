@@ -1,10 +1,42 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+
+import AuthContext from "../../api/AuthContext";
 
 const Login = () => {
 
     const navigation = useNavigation();
+    const {loginUser} = useContext(AuthContext);
+
+    const [credentials, setCredentials] = useState({
+        type: '',
+        username: '',
+        password: ''
+    });
+
+    const handleInputChange = (value, name) => {
+        setCredentials({ ...credentials, [name]: value});
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if(!credentials.type || !credentials.username || !credentials.password) {
+            alert("Please enter all required fields!");
+            return;
+        }
+        //console.log(credentials);
+        loginUser(credentials);
+        if(credentials.type === 'Donor') {
+            navigation.navigate("Home");
+        }
+        setCredentials({
+            type: '',
+            username: '',
+            password: ''
+        });
+    };
 
     return (
         <SafeAreaView>
@@ -24,14 +56,39 @@ const Login = () => {
 
                     <Text style={styles.input}>Donor, NGO, JobSeeker, JobPoster</Text>
                     <View style={styles.formInput}>
-                        <TextInput style={styles.textInput} placeholder="Type your option" />
+                        <TextInput 
+                            name={'type'}
+                            value={credentials.type}
+                            placeholder="Enter Your Login Type"
+                            onChangeText={(text) => {
+                                handleInputChange(text, 'type')
+                            }}
+                            style={styles.textInput}
+                        />
                     </View>
 
                     <View style={styles.formInput}>
-                        <TextInput style={styles.textInput} placeholder="Username" />
+                        <TextInput 
+                            name={'username'}
+                            value={credentials.username}
+                            onChangeText={(text) => {
+                                handleInputChange(text, 'username')
+                            }}
+                            placeholder="Username"
+                            style={styles.textInput}
+                        />
                     </View>
                     <View style={styles.formInput}>
-                        <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} />
+                        <TextInput 
+                            name={'password'}
+                            value={credentials.password}
+                            placeholder="Password"
+                            onChangeText={(text) => {
+                                handleInputChange(text, 'password')
+                            }}
+                            secureTextEntry
+                            style={styles.textInput} 
+                        />
                     </View>
                     <View style={styles.formInput}>
                         <TouchableOpacity onPress={()=>{navigation.navigate("Forget")}}>
@@ -39,7 +96,7 @@ const Login = () => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.formInput}>
-                        <TouchableOpacity style={styles.defaultButton} onPress={()=>{navigation.navigate("Home")}}>
+                        <TouchableOpacity style={styles.defaultButton} onPress={handleSubmit}>
                             <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Login</Text>
                         </TouchableOpacity>
                     </View>
