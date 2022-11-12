@@ -16,7 +16,7 @@ const Home = () => {
                     <Text style={styles.myTitle}>Welcome To CAREIT</Text>
                 </View>
                 <View style={{flexDirection:'row',marginTop:50}}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("")}}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("AllFoods")}}>
                         <Image source={imagesPath.FoodIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
                         <Text style={styles.input}>Food Donation</Text>
                     </TouchableOpacity>

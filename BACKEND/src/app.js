@@ -16,8 +16,8 @@ app.use(cors());
 app.use(express.json({ limit: "20mb" }));
 
 //IMPORT ROUTES
-// const -Routes = require("./api/routes/");
-// app.use(-Routes);
+const FoodRoutes = require("./api/routes/food.r");
+app.use(FoodRoutes);
 
 app.use("/api/", require("./api/routes/user.auth.r"));
 
