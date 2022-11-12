@@ -13,7 +13,7 @@ export const AuthContextProvider = ({children}) => {
 
     const checkUserLoggedIn = async () => {
         try {
-            const res = await fetch(`http://172.28.7.93:8050/api/me`, {
+            const res = await fetch(`http://192.168.8.192:8050/api/me`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${AsyncStorage.getItem("token")}`,
@@ -31,7 +31,7 @@ export const AuthContextProvider = ({children}) => {
 
     const loginUser = async (userData) => {
         try {
-            const res = await fetch(`http://172.28.7.93:8050/api/login`, {
+            const res = await fetch(`http://192.168.8.192:8050/api/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export const AuthContextProvider = ({children}) => {
 
     const registerUser = async (userData) => {
         try {
-            const res = await fetch(`http://172.28.7.93:8050/api/register`, {
+            const res = await fetch(`http://192.168.8.192:8050/api/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -73,8 +73,31 @@ export const AuthContextProvider = ({children}) => {
       };
 
 
+      const addFood = async (userData) => {
+        try {
+            const res = await fetch(`http://192.168.8.192:8050/food/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ ...userData }),
+            });
+
+            const result = await res.json();
+    
+            if (!result.error) {
+                alert("Food Added Successfully!");
+            } else {
+                alert(result.error);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+      };
+
+
       return (
-        <AuthContext.Provider value={{ loginUser, user, setUser, registerUser }}>
+        <AuthContext.Provider value={{ loginUser, user, setUser, registerUser, addFood }}>
             {children}
         </AuthContext.Provider>
       );
