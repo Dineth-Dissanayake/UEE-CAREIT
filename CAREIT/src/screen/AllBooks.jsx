@@ -6,47 +6,43 @@ import imagesPath from '../assets/constants/imagePath';
 
 const data = [
     {
-        foodType: 'Sugar',
-        foodCount: '2Kg',
+        bookType: 'Science',
+        bookCount: 20,
         donationWay: 'Contact with NGO',
-        availability: 'Before 09-08-2022',
-        status: 'Pending'
+        availability: '09-08-2022'
     },
     {
-        foodType: 'Dhal',
-        foodCount: '5Kg',
-        donationWay: 'Delever Directly',
-        availability: 'On or Before 19-08-2022',
-        status: 'Approved'
+        bookType: 'Compter Science',
+        bookCount: 50,
+        donationWay: 'Deliver to the relevent prson',
+        availability: '09-08-2022'
     },
     {
-        foodType: 'Pizza',
-        foodCount: '2',
-        donationWay: 'Delever Directly',
-        availability: '09-08-2022',
-        status: 'Pending'
-    },
-    {
-        foodType: 'Rice',
-        foodCount: '5Kg',
+        bookType: 'History Books',
+        bookCount: 7,
         donationWay: 'Contact with NGO',
-        availability: '09-08-2022',
-        status: 'Declined'
+        availability: '09-07-2022'
+    },
+    {
+        bookType: 'Novel',
+        bookCount: 3,
+        donationWay: 'Deliver to the relevent prson',
+        availability: '09-08-2022'
     }
 ]
 
-const AllFoods = () => {
+const AllBooks = () => {
 
     const navigation = useNavigation();
     const [dataList, setDataList] = useState(data);
 
     const [credentials, setCredentials] = useState({
-        foods:[]
+        books:[]
     });
 
     useEffect(async () => {
         try {
-            const res = await  fetch(`http://172.28.7.93.192:8050/foods`, {
+            const res = await  fetch(`http://172.28.6.40:8050/books`, {
                 method: "GET"
             });
             const result = await res.json();
@@ -61,25 +57,14 @@ const AllFoods = () => {
         }
     }, []);
 
-    // const handleDelete = (item) => {
-    //     fetch ({
-    //         url: "http://172.28.7.93.192:8050/food/delete/" +_id,
-    //         method: "DELETE"
-    //     }).then((res) => {
-    //         var response = res.data;
-    //         getList();
-    //     })
-    // }
-
     const renderItem = ({item, index}) => {
         return (
             <View key={index} style={styles.itemContainer}>
                 <View style={styles.itemBody}>
-                    <Text style={styles.itemName}>{item.foodType}</Text>
-                    <Text style={styles.itemOthers}>Food Count: {item.foodCount}</Text>
+                    <Text style={styles.itemName}>{item.bookType}</Text>
+                    <Text style={styles.itemOthers}>Book Count: {item.bookCount}</Text>
                     <Text style={styles.itemOthers}>Donation Way: {item.donationWay}</Text>
                     <Text style={styles.itemOthers}>Availability: {item.availability}</Text>
-                    <Text style={styles.itemStatus}>{item.status}</Text>
                 </View>
             </View>
         )
@@ -88,7 +73,7 @@ const AllFoods = () => {
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
-                <Text style={styles.myTitle}>Food Donation Entries</Text>
+                <Text style={styles.myTitle}>Book Donation Entries</Text>
 
                 <FlatList 
                     data={dataList}
@@ -97,9 +82,9 @@ const AllFoods = () => {
                 />
 
                 <View>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("AddFood")}}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("AddBook")}}>
                         <Image source={imagesPath.icAdd} 
-                            style={{marginTop:80, marginLeft:300, width:60, height:60}}
+                            style={{marginTop:100, marginLeft:300, width:60, height:60}}
                         />
                     </TouchableOpacity>
                 </View>
@@ -171,4 +156,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AllFoods;
+export default AllBooks;

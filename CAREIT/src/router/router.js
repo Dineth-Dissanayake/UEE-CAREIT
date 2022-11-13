@@ -9,6 +9,14 @@ import Forget from "../screen/auth/Forget";
 import Splash from "../screen/splash/Splash";
 import AllFoods from "../screen/AllFoods";
 import AddFood from "../screen/AddFood";
+import Homejobs from "../screen/Homejobs";
+import AddJobPoster from "../screen/AddJobPoster";
+import AddBook from "../screen/AddBook";
+import AllBooks from "../screen/AllBooks";
+import AllPosts from "../screen/AllPosts";
+import AllJobs from "../screen/AllJobs";
+import AddPost from "../screen/AddPost";
+import ClothsAndSanitationHome from "../screen/ClothsAndSanitationHome";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +37,25 @@ const AppRouter = () => {
                 <Stack.Screen options={{title:'Food Donation',headerStyle:{backgroundColor:'#f79616'}}} 
                     name="AddFood" component={AddFood} 
                 />
+                <Stack.Screen options={{title:'',headerBackVisible:false,headerStyle:{backgroundColor:'#1e7529'}}} 
+                    name="Homejobs" component={Homejobs} 
+                />
+                <Stack.Screen options={{title:'Food Donation',headerStyle:{backgroundColor:'#1e7529'}}} 
+                    name="AddJobPoster" component={AddJobPoster} 
+                />
+                <Stack.Screen options={{title:'Food Donation',headerStyle:{backgroundColor:'#1e7529'}}} 
+                    name="AllJobs" component={AllJobs} 
+                />
+
+                <Stack.Screen options={{title:'Book Donation',headerStyle:{backgroundColor:'#f79616'}}} 
+                    name="AllBooks" component={AllBooks} 
+                />
+                <Stack.Screen options={{title:'Book Donation',headerStyle:{backgroundColor:'#f79616'}}} 
+                    name="AddBook" component={AddBook}
+                />
+                <Stack.Screen options={{headerShown:false}} name="ClothsAndSanitationHome" component={ClothsAndSanitationHome} />
+                <Stack.Screen options={{headerShown:false}} name="AddPost" component={AddPost} />
+                <Stack.Screen options={{headerShown:false}} name="AllPosts" component={AllPosts} />
             </Stack.Navigator>
         </NavigationContainer>
     )

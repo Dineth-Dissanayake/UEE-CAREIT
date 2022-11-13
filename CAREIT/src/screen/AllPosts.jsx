@@ -1,58 +1,42 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View, Dimensions, FlatList, Image } from "react-native";
-
-import imagesPath from '../assets/constants/imagePath';
+//import axios from 'axios';
+//import imagesPath from '../assets/constants/imagePath';
 
 const data = [
     {
-        foodType: 'Sugar',
-        foodCount: '2Kg',
-        donationWay: 'Contact with NGO',
-        availability: 'Before 09-08-2022',
-        status: 'Pending'
+        name: 'Vihanga Perera',
+        description: 'Hello! I am looking for any kind of cloths and sanitation.'
     },
     {
-        foodType: 'Dhal',
-        foodCount: '5Kg',
-        donationWay: 'Delever Directly',
-        availability: 'On or Before 19-08-2022',
-        status: 'Approved'
+        name: 'Dineth Perera',
+        description: 'Hello! I am looking for any kind of cloths and sanitation.'
     },
     {
-        foodType: 'Pizza',
-        foodCount: '2',
-        donationWay: 'Delever Directly',
-        availability: '09-08-2022',
-        status: 'Pending'
-    },
-    {
-        foodType: 'Rice',
-        foodCount: '5Kg',
-        donationWay: 'Contact with NGO',
-        availability: '09-08-2022',
-        status: 'Declined'
+        name: 'Chandima Perera',
+        description: 'Hello! I am looking for any kind of cloths and sanitation.'
     }
 ]
 
-const AllFoods = () => {
+const AllPosts = () => {
 
     const navigation = useNavigation();
     const [dataList, setDataList] = useState(data);
 
     const [credentials, setCredentials] = useState({
-        foods:[]
+        posts:[]
     });
 
     useEffect(async () => {
         try {
-            const res = await  fetch(`http://172.28.7.93.192:8050/foods`, {
+            const res = await  fetch(`http://172.28.6.42:8050//clothsPosts`, {
                 method: "GET"
             });
             const result = await res.json();
             if (!result.error) {
                 //setContacts(result.credentials);
-                //alert("data etched")
+                alert("data fetched")
             } else {
                 console.log(result);
             }
@@ -61,25 +45,12 @@ const AllFoods = () => {
         }
     }, []);
 
-    // const handleDelete = (item) => {
-    //     fetch ({
-    //         url: "http://172.28.7.93.192:8050/food/delete/" +_id,
-    //         method: "DELETE"
-    //     }).then((res) => {
-    //         var response = res.data;
-    //         getList();
-    //     })
-    // }
-
     const renderItem = ({item, index}) => {
         return (
             <View key={index} style={styles.itemContainer}>
                 <View style={styles.itemBody}>
-                    <Text style={styles.itemName}>{item.foodType}</Text>
-                    <Text style={styles.itemOthers}>Food Count: {item.foodCount}</Text>
-                    <Text style={styles.itemOthers}>Donation Way: {item.donationWay}</Text>
-                    <Text style={styles.itemOthers}>Availability: {item.availability}</Text>
-                    <Text style={styles.itemStatus}>{item.status}</Text>
+                    <Text style={styles.itemName}>{item.name}</Text>
+                    <Text style={styles.itemOthers}>Description: {item.description}</Text>
                 </View>
             </View>
         )
@@ -88,21 +59,13 @@ const AllFoods = () => {
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
-                <Text style={styles.myTitle}>Food Donation Entries</Text>
+                <Text style={styles.myTitle}>Help seeker posts</Text>
 
                 <FlatList 
                     data={dataList}
                     keyExtractor={(e, i) => i.toString()}
                     renderItem={renderItem}
                 />
-
-                <View>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("AddFood")}}>
-                        <Image source={imagesPath.icAdd} 
-                            style={{marginTop:80, marginLeft:300, width:60, height:60}}
-                        />
-                    </TouchableOpacity>
-                </View>
 
             </SafeAreaView>
         </ScrollView>
@@ -171,4 +134,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AllFoods;
+export default AllPosts;

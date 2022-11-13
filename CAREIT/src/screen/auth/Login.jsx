@@ -30,6 +30,8 @@ const Login = () => {
         loginUser(credentials);
         if(credentials.type === 'Donor') {
             navigation.navigate("Home");
+        } if (credentials.type === 'JobPoster') {
+            navigation.navigate("Homejobs");
         }
         setCredentials({
             type: '',

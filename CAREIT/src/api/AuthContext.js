@@ -31,7 +31,7 @@ export const AuthContextProvider = ({children}) => {
 
     const loginUser = async (userData) => {
         try {
-            const res = await fetch(`http://192.168.8.192:8050/api/login`, {
+            const res = await fetch(`http://172.28.7.93:8050/api/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export const AuthContextProvider = ({children}) => {
 
     const registerUser = async (userData) => {
         try {
-            const res = await fetch(`http://192.168.8.192:8050/api/register`, {
+            const res = await fetch(`http://172.28.7.93:8050/api/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export const AuthContextProvider = ({children}) => {
 
       const addFood = async (userData) => {
         try {
-            const res = await fetch(`http://192.168.8.192:8050/food/add`, {
+            const res = await fetch(`http://172.28.7.93:8050/food/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -96,8 +96,77 @@ export const AuthContextProvider = ({children}) => {
       };
 
 
+      const addBook = async (userData) => {
+        try {
+            const res = await fetch(`http://172.28.7.93:8050/book/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ ...userData }),
+            });
+
+            const result = await res.json();
+    
+            if (!result.error) {
+                alert("Book Added Successfully!");
+            } else {
+                alert(result.error);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+      };
+
+
+      const AddJobPoster = async (userData) => {
+        try {
+            const res = await fetch(`http://172.28.7.93:8050/jobPoster/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ ...userData }),
+            });
+
+            const result = await res.json();
+    
+            if (!result.error) {
+                alert("Job Posted Successfully!");
+            } else {
+                alert(result.error);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+      };
+
+
+      const addPost = async (userData) => {
+        try {
+            const res = await fetch(`http://172.28.7.93:8050/clothsPost/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ ...userData }),
+            });
+
+            const result = await res.json();
+
+            if (!result.error) {
+                alert("Post added successfully!");
+            } else {
+                alert(result.error);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+      };
+
+
       return (
-        <AuthContext.Provider value={{ loginUser, user, setUser, registerUser, addFood }}>
+        <AuthContext.Provider value={{ loginUser, user, setUser, registerUser, addFood, AddJobPoster, addPost, addBook }}>
             {children}
         </AuthContext.Provider>
       );
