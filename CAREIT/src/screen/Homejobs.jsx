@@ -4,7 +4,7 @@ import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, Vi
 
 import imagesPath from '../assets/constants/imagePath';
 
-const Home = () => {
+const Homejobs = () => {
 
     const navigation = useNavigation();
 
@@ -14,27 +14,23 @@ const Home = () => {
 
                 <View style={styles.container}>
                     <Text style={styles.myTitle}>Welcome To CAREIT</Text>
+                    <Text style={styles.myTitle}>JOb Area</Text>
                 </View>
                 <View style={{flexDirection:'row',marginTop:50}}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("AllFoods")}}>
-                        <Image source={imagesPath.FoodIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
-                        <Text style={styles.input}>Food Donation</Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("AddJobPoster")}}>
+                        <Image source={imagesPath.JOBPOSTERIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
+                        <Text style={styles.input}>Job Poster</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("AllBooks")}}>
-                        <Image source={imagesPath.BookIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
-                        <Text style={styles.input}>Book Donation</Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("")}}>
+                        <Image source={imagesPath.JOBSEEKERIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
+                        <Text style={styles.input}>Job Seeker</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={{flexDirection:'row',marginTop:50}}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("ClothsAndSanitationHome")}}>
-                        <Image source={imagesPath.ClothIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
-                        <Text style={styles.input1}>Cloths & Samitary</Text>
-                        <Text style={styles.input1}>Items Donation</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("")}}>
-                        <Image source={imagesPath.NGOIcon} style={{width:120,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
-                        <Text style={styles.input}>NGO'S Details</Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("AllJobs")}}>
+                        <Image source={imagesPath.JOBSIcon} style={{width:300,height:120,backgroundColor:'#fff',borderWidth: 2,borderColor: 'black',marginLeft:50}} />
+                        <Text style={styles.input}>Find Your Job Oppotunities Here</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -75,7 +71,7 @@ const Home = () => {
     },
     defaultButton: {
         padding: 15,
-        backgroundColor: '#f79616',
+        backgroundColor: '#1e7529',
         borderRadius: 10,
         width:150,
         marginLeft:115,
@@ -83,4 +79,4 @@ const Home = () => {
     }
  });
 
- export default Home;
+ export default Homejobs;

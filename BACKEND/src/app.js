@@ -19,6 +19,15 @@ app.use(express.json({ limit: "20mb" }));
 const FoodRoutes = require("./api/routes/food.r");
 app.use(FoodRoutes);
 
+const JobRoutes = require("./api/routes/jobPoster.r");
+app.use(JobRoutes);
+
+const BookRoutes = require("./api/routes/book.r");
+app.use(BookRoutes);
+
+const ClothsRoutes = require("./api/routes/clothsPost.r");
+app.use(ClothsRoutes);
+
 app.use("/api/", require("./api/routes/user.auth.r"));
 
 app.listen(PORT, () => {
