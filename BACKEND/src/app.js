@@ -21,6 +21,9 @@ app.use(express.json({ limit: "20mb" }));
 
 app.use("/api/", require("./api/routes/user.auth.r"));
 
+const clothsPostRoutes = require("./api/routes/clothsPost.r");
+app.use(clothsPostRoutes);
+
 app.listen(PORT, () => {
     console.log('🚀 SERVER IS UP & RUNNING ON:', PORT);
     connect();

@@ -31,6 +31,15 @@ import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, Tou
                     </TouchableOpacity>
                 </View>
 
+                <View style={{flexDirection:'row',marginTop:50}}>
+                    <TouchableOpacity style={styles.defaultButton1} onPress={()=>{navigation.navigate("ClothsAndSanitationHome")}}>
+                            <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Cloths & Sanitation</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.defaultButton1} onPress={()=>{navigation.navigate("")}}>
+                            <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Suppliers</Text>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.formInput}>
                         <TouchableOpacity style={styles.defaultButton} onPress={()=>{navigation.navigate("Login")}}>
                             <Text style={{textAlign:'center', fontSize:16, color:'#fff', fontWeight:'bold'}} >Logout</Text>
